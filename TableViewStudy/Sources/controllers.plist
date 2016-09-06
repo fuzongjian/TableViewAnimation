@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>CellRollController</string>
+		<key>title</key>
+		<string>扇叶效果</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>RefreshController</string>
+		<key>title</key>
+		<string>自定义上下拉刷新</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>CellFoldController</string>
+		<key>title</key>
+		<string>折叠展开动画</string>
+	</dict>
+</array>
+</plist>

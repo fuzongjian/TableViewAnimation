@@ -9,43 +9,60 @@
 #import "HomeViewController.h"
 
 @interface HomeViewController ()
-@property (nonatomic,strong) NSArray * dataArray ;
+/**
+ *  @brief 存放控制器字符串
+ */
+@property (nonatomic,strong) NSArray * dataArray;
+/**
+ *  @brief 控制器标题
+ */
+@property (nonatomic,strong) NSArray * titleArray;
 @end
 
 @implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    return 20;
+    return self.dataArray.count;
 }
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * cellID = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
-    cell.textLabel.text = @"fuzongjian";
-
+    cell.textLabel.text = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"title"];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    NSString * controllerStr = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"name"];
+    UIViewController * nextController = [[NSClassFromString(controllerStr) alloc] init];
+    nextController.title = [[self.dataArray objectAtIndex:indexPath.row] objectForKey:@"title"];;
+    [self.navigationController pushViewController:nextController animated:YES];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
+#pragma mark --- lazy load
+- (NSArray *)dataArray{
+    if (_dataArray == nil) {
+        _dataArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"controllers" ofType:@"plist"]];
+    }
+    return  _dataArray;
 }
 /*
 // Override to support conditional editing of the table view.
