@@ -20,5 +20,17 @@
 		<key>title</key>
 		<string>折叠展开动画</string>
 	</dict>
+	<dict>
+		<key>name</key>
+		<string>TableViewLinkage</string>
+		<key>title</key>
+		<string>TableView联动</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>CollectionViewLinkage</string>
+		<key>title</key>
+		<string>CollectionView联动</string>
+	</dict>
 </array>
 </plist>
